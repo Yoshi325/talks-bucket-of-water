@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="generator" content="HTML Tidy for HTML5 for Mac OS X version 5.2.0">
+    <meta charset="utf-8">
+    <meta name="generator" content="pandoc">
+    <meta name="author" content="Charles L. Yost">
+    <title>The Whole World is Burning</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="reveal.js/css/reveal.css">
+    <style type="text/css">
+    code{white-space: pre;}
+    </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme"><!-- Printing and PDF exports -->
+
+    <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script><!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+<style>   
+.reveal .slides section .fragment.current-visible.current-fragment.collapsable-fragment { display: initial; } 
+.reveal .slides section .fragment.current-visible.collapsable-fragment { display: none; } 
+h1.subtitle { font-size: 2em; } 
+.code { text-align: left; } 
+.reveal dd > p { margin: 0; } 
+figure, img { border:none !important; outline: none !important; } 
+li { white-space: nowrap; } 
+section#history div.fragment { text-align: left; } 
+</style>  
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h1 class="title">The Whole World is Burning</h1>
+                <p class="author">Charles L. Yost</p>
+                <p class="date">2017-01</p>
+            </section>
+            <section id="speaker-bio" class="slide level1">
+                <h1>Speaker Bio</h1>
+                <p>Charles Yost is currently a Security Developer at Binary Defense Systems. He has worked in the IT industry for over a decade in a wide variety of roles including: Printer Technician, VoIP Systems Administrator, .Net Developer, Web Developer, and Security Developer. Throughout life his number one passion has been learning new skills. He can often be found researching a topic, attempting to keep up with the quickly evolving field of technology. Charles enjoys teaching and talking to others about technology. He is a member of NEOISF, and attends as many conferences as he can justify with his wife.</p>
+            </section>
+            <section id="binary-defense" class="slide level1">
+                <h1>Binary Defense</h1>
+                <p>Binary Defense Systems is a local Managed Security Service Provider. We provide a full range of MSSP services including: monitoring, consulting, threat intelligence, and incident response. We also are the creators of Vision, a real-time software solution which gives organizations immediate visibility into the latest attack vectors. Contact us at <a href="https://binarydefense.com/" class="uri">https://binarydefense.com/</a></p>
+            </section>
+            <section id="speaker-contact" class="slide level1">
+                <h1>Speaker Contact</h1>
+                <p>Twitter: @CHARLESLYOST</p>
+                <p>GitHub & YouTube: Yoshi325</p>
+                <div style="white-space: pre-line;">
+                    This Talk: <a href="https://github.com/Yoshi325/talks-bucket-of-water" class="uri">https://github.com/Yoshi325/talks-bucket-of-water</a>
+                </div>
+            </section>
+            <section id="summary" class="slide level1">
+                <h1>Summary</h1>
+                <p>Information Security is a galvanizing term. It carries much power, and therefore, much responsibility. It can be hard to obtain buy-in for long term security needs from Management. And with all the vulerabilities cropping up every day, the pressure to "be secure" can be overwhelming.</p>
+            </section>
+            <section id="summary-1" class="slide level1">
+                <h1>Summary</h1>
+                <p>How can a lone developer make a difference? This talk is all about the second half of its title. Common security concerns will be reviewed, then addressed with a focus on what can be done when faced with them or how to avoid them in the first place. The whole world is burning. But you can make a difference.</p>
+            </section>
+            <section id="here-is-your-bucket-of-water." class="slide level1">
+                <h1>Here is your bucket of water.</h1>
+            </section>
+            <section id="this-talk-is-not" class="slide level1">
+                <h1>This talk is NOT</h1>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>OSWASP TOP 10</p>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>An in-depth look at all aspects of security</p>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>An introduction to secure programming</p>
+                </div>
+            </section>
+            <section id="this-talk-is" class="slide level1">
+                <h1>This talk IS</h1>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>Make some security choices easy(er)</p>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>When there is not a clear choice,</p>
+                    <p>compare and contrast the choices</p>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>Spans Sysadmin and Developer scope</p>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>Web focused at first, transitions</p>
+                    <p>to broader development.</p>
+                </div>
+            </section>
+            <section id="lets-go" class="slide level1">
+                <h1>Let's Go!</h1>
+            </section>
+            <section id="transport" class="slide level1">
+                <h1>Transport</h1>
+                <ul>
+                    <li>SSL is broken</li>
+                    <li>Use TLS, 1.2 if possible</li>
+                </ul>
+            </section>
+            <section id="transport-configuration" class="slide level1">
+                <h1>Transport Configuration</h1>
+                <p><a href="https://cipherli.st/">Cipherli.st Strong Ciphers Configurations</a></p>
+                <p><a href="https://mozilla.github.io/server-side-tls/ssl-config-generator/">Mozilla SSL Configuration Generator</a></p>
+            </section>
+            <section id="certificates-are-expensive" class="slide level1">
+                <h1>Certificates are Expensive!</h1>
+                <ul>
+                    <li>Processing</li>
+                </ul>
+            </section>
+            <section id="certificates-are-expensive-1" class="slide level1">
+                <h1>Certificates are Expensive!</h1>
+                <ul>
+                    <li>Money</li>
+                </ul>
+            </section>
+            <section id="lets-encrypt" class="slide level1">
+                <h1>Let's Encrypt</h1>
+                <p><a href="https://letsencrypt.org/">Let’s Encrypt is a free, automated, and open Certificate Authority.</a></p>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>How about Free?</p>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>Any Cons?</p>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>Domain Validation</p>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>What if I need better?</p>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>Buy extended validation (EV) certificates for public web servers.</p>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>Yes, the are expensive.</p>
+                </div>
+            </section>
+            <section id="access" class="slide level1">
+                <h1>Access</h1>
+                <ul>
+                    <li>Identity</li>
+                    <li>Authentication</li>
+                    <li>Authorization</li>
+                </ul>
+            </section>
+            <section id="identity" class="slide level1">
+                <h1>Identity</h1>
+                <p>Often, username.</p>
+            </section>
+            <section id="authentication" class="slide level1">
+                <h1>Authentication</h1>
+                <p>Validation of the right to use an identity.</p>
+            </section>
+            <section id="authorization" class="slide level1">
+                <h1>Authorization</h1>
+                <p>Validation of an identity's right to use a resource.</p>
+            </section>
+            <section id="tls-client-certificates" class="slide level1">
+                <h1>TLS Client Certificates</h1>
+                <ul>
+                    <li>Rare, but useful.</li>
+                    <li>After install, seemless authentication.</li>
+                </ul>
+            </section>
+            <section id="http-basic-authentication" class="slide level1">
+                <h1>HTTP Basic Authentication</h1>
+                <ul>
+                    <li>Two-step process to authenticate.</li>
+                    <li>At the webserver level.</li>
+                    <li>Secured by TLS.</li>
+                    <li>Username & Password are Base64 Encoded.</li>
+                    <li>Not the best choice for users.</li>
+                </ul>
+            </section>
+            <section id="http-digest-authentication" class="slide level1">
+                <h1>HTTP Digest Authentication</h1>
+                <ul>
+                    <li>Multi-step process to authenticate.</li>
+                    <li>At the webserver level.</li>
+                    <li>Secured by TLS.</li>
+                    <li>Password is Hashed with nonce.</li>
+                    <li>Not the best choice for users.</li>
+                </ul>
+            </section>
+            <section id="page-level-authentication" class="slide level1">
+                <h1>Page Level Authentication</h1>
+                <ul>
+                    <li>Secured by TLS.</li>
+                    <li>Username & Password cleartext POST.</li>
+                    <li>Now you have to store passwords.</li>
+                </ul>
+            </section>
+            <section id="password-storage" class="slide level1">
+                <h1>Password Storage</h1>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>Cleartext Anyone?</p>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>Do NOT create your own method</p>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>Do NOT use MD5 (it is fast)</p>
+                </div>
+            </section>
+            <section id="password-storage-1" class="slide level1">
+                <h1>Password Storage</h1>
+                <p>Two Key Points:</p>
+                <ul>
+                    <li>Do use salt (long, unique, and random)</li>
+                    <li>Do use a cryptographically secure hash</li>
+                </ul>
+            </section>
+            <section id="scrypt" class="slide level1">
+                <h1>SCrypt</h1>
+                <blockquote>
+                    <div style="white-space: pre-line;">
+                        A password-based key derivation function (password-based KDF) is generally designed to be computationally intensive, so that it takes a relatively long time to compute (say on the order of several hundred milliseconds). ~ Wikipedia
+                    </div>
+                </blockquote>
+            </section>
+            <section id="scrypt-1" class="slide level1">
+                <h1>SCrypt</h1>
+                <p>Memory Hard</p>
+            </section>
+            <section id="bcrypt" class="slide level1">
+                <h1>BCrypt</h1>
+                <blockquote>
+                    <div style="white-space: pre-line;">
+                        bcrypt is a password hashing function [...] incorporating a salt to protect against rainbow table attacks, bcrypt is an adaptive function: over time, the iteration count can be increased to make it slower, so it remains resistant to brute-force search attacks even with increasing computation power. ~ Wikipedia
+                    </div>
+                </blockquote>
+            </section>
+            <section id="bcrypt-1" class="slide level1">
+                <h1>BCrypt</h1>
+                <p>Time Hard</p>
+            </section>
+            <section id="pbkdf2" class="slide level1">
+                <h1>PBKDF2</h1>
+                <ul>
+                    <li>Password-Based Key Derivation Function 2</li>
+                    <li>Part of RSA PKCS series</li>
+                    <li>Time Hard</li>
+                    <li>Iteration recomendation from OWASP:
+                        <ul>
+                            <li>64k in 2013, doubled every two years (2,048,000 today)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section id="which-one" class="slide level1">
+                <h1>Which One?</h1>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>NIST has issued Special Publication SP 800-132 on the subject of storing hashed passwords.</p>
+                    <p>Basically they recommend PBKDF2.</p>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>My favorite is SCrypt.</p>
+                    <p>But any of these are acceptable.</p>
+                    <p>As are some of the newer kids on the block (Argon2).</p>
+                </div>
+            </section>
+            <section id="not-your-problem" class="slide level1">
+                <h1>Not Your Problem</h1>
+                <p>Maybe you can leverage someone else's auth.</p>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Google</li>
+                    <li>Twitter</li>
+                </ul>
+            </section>
+            <section id="database-encryption" class="slide level1">
+                <h1>Database Encryption</h1>
+                <ul>
+                    <li>MIT CryptDB</li>
+                    <li>MS SQL Always Encrypted</li>
+                    <li>Backups in Cleartext?</li>
+                </ul>
+            </section>
+            <section id="cleartext-anyone" class="slide level1">
+                <h1>Cleartext Anyone?</h1>
+                <ul>
+                    <li>Migration to Encrypted</li>
+                </ul>
+            </section>
+            <section id="migration" class="slide level1">
+                <h1>Migration</h1>
+                <p>Options:</p>
+                <ul>
+                    <li>Force Reset</li>
+                    <li>Upgrade/Update</li>
+                </ul>
+            </section>
+            <section id="migration-upgrade" class="slide level1">
+                <h1>Migration: Upgrade</h1>
+                <ol>
+                    <li>Add legacy_password column (BOOL)</li>
+                    <li>Upgrade existing hash (double-hash)</li>
+                    <li>Handle legacy_password == TRUE</li>
+                </ol>
+                <ol>
+                    <li class="fragment">Authenticate</li>
+                    <li class="fragment">Update with single-hash</li>
+                </ol>
+            </section>
+            <section id="hashes" class="slide level1">
+                <h1>Hashes</h1>
+                <blockquote>
+                    <p>A hash function is any function that can be used to map data of arbitrary size to data of fixed size. ~ Wikipedia</p>
+                </blockquote>
+            </section>
+            <section id="crypto-hashes" class="slide level1">
+                <h1>Crypto Hashes</h1>
+                <div class="current-visible fragment collapsable-fragment">
+                    <blockquote>
+                        <p>A cryptographic hash function is a special class of hash function that has certain properties which make it suitable for use in cryptography. ~ Wikipedia</p>
+                    </blockquote>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <blockquote>
+                        <p>Cryptographic hash functions have many information-security applications, notably in digital signatures, message authentication codes (MACs), and other forms of authentication. ~ Wikipedia</p>
+                    </blockquote>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>Important!</p>
+                    <p>There are many applications,</p>
+                    <p>not all crypto hashes are suitable</p>
+                    <p>for all applications.</p>
+                </div>
+            </section>
+            <section id="crypto-hashes-1" class="slide level1">
+                <h1>Crypto Hashes</h1>
+                <ul>
+                    <li>Do NOT use (for secure hashing)
+                        <ul>
+                            <li>MD2, MD4 & MD5</li>
+                            <li>SHA1</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+            <section id="message-digest" class="slide level1">
+                <h1>Message Digest</h1>
+                <p>Hash</p>
+            </section>
+            <section id="message-auth-code" class="slide level1">
+                <h1>Message Auth Code</h1>
+                <div class="current-visible fragment collapsable-fragment">
+                    <blockquote>
+                        <p>[...] short piece of information used to authenticate a message [...] ~ Wikipedia</p>
+                    </blockquote>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <blockquote>
+                        <p>[...] protects both a message's data integrity as well as its authenticity [...] ~ Wikipedia</p>
+                    </blockquote>
+                </div>
+                <div class="current-visible fragment collapsable-fragment">
+                    <p>Key should be shared out-of-band.</p>
+                </div>
+            </section>
+            <section id="hash-based-message-auth-code" class="slide level1">
+                <h1>Hash-based Message Auth Code</h1>
+                <p>Basically, uses a cryptographic hash function to generate a MAC.</p>
+            </section>
+            <section id="compression" class="slide level1">
+                <h1>Compression</h1>
+                <p>Correct Order of Operations:</p>
+                <ol>
+                    <li>Compress</li>
+                    <li>Encrypt</li>
+                    <li>MAC</li>
+                </ol>
+            </section>
+            <section id="symmetric-encryption" class="slide level1">
+                <h1>Symmetric Encryption</h1>
+                <p>Same key at both ends.</p>
+            </section>
+            <section id="asymmetric-encryption" class="slide level1">
+                <h1>Asymmetric Encryption</h1>
+                <p>Different keys at each end.</p>
+                <p>(Uses a key pair: Public and Private)</p>
+            </section>
+            <section id="symmetric-encryption-1" class="slide level1">
+                <h1>Symmetric Encryption</h1>
+                <ul>
+                    <li>RC4 is right out</li>
+                    <li>AES</li>
+                    <li>Not ECB mode of AES</li>
+                    <li>Key size of 128bits or greater</li>
+                    <li>CBC for block mode</li>
+                    <li>CTR for stream mode</li>
+                    <li>Random Initialization Vector</li>
+                    <li>Random Key</li>
+                    <li>Random Padding</li>
+                    <li>Never reuse Key and IV</li>
+                </ul>
+            </section>
+            <section id="asymmetric-encryption-1" class="slide level1">
+                <h1>Asymmetric Encryption</h1>
+                <p>RSA with 2048 bit key or ECDSA/ECDH with 256 bit key</p>
+            </section>
+            <section id="pseudo-random-numbers" class="slide level1">
+                <h1>Pseudo-Random Numbers</h1>
+                <p>Computers are not good at random.</p>
+            </section>
+            <section id="cryptographically-secure-pseudo-random-numbers" class="slide level1">
+                <h1>Cryptographically Secure Pseudo-Random Numbers</h1>
+                <p>Needed for things like the IV.</p>
+            </section>
+            <section id="the-end" class="slide level1">
+                <h1>The End</h1>
+            </section>
+            <section id="references" class="slide level1">
+                <h1>References</h1>
+                <ul>
+                    <li>
+                        <a href="https://github.com/FallibleInc/security-guide-for-developers">Fallible Inc's Security Guide for Developers</a>
+                    </li>
+                    <li>Securing Your API Endpoints by Seth Petry-Johnson (Stir Trek 2016)
+                        <ul>
+                            <li>
+                                <a href="https://www.youtube.com/watch?v=NHeoCocs60I">Securing Your API Endpoints - Seth Petry-Johnson - YouTube</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/spetryjohnson/Securing-Your-API-Endpoints---StirTrek-2016">Securing-Your-API-Endpoints - StirTrek-2016 - GitHub</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Common Developer Crypto Mistakes by Kevin W. Wall (Stir Trek 2016)
+                        <ul>
+                            <li>
+                                <a href="https://www.youtube.com/watch?v=UXQh1_zQqxo">Common Developer Crypto Mistakes - Kevin W. Wall - YouTube</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="https://blog.codinghorror.com/youre-probably-storing-passwords-incorrectly/">You're Probably Storing Passwords Incorrectly</a>
+                    </li>
+                    <li>
+                        <a href="http://www.openwall.com/presentations/PHDays2014-Yescrypt/mgp00004.html">ASIC/FPGA attacks on modern password hashes</a>
+                    </li>
+                    <li>
+                        <a href="https://paragonie.com/blog/2016/02/how-safely-store-password-in-2016">How to Safely Store Your Users' Passwords in 2016</a>
+                    </li>
+                    <li>
+                        <a href="http://www.tarsnap.com/scrypt/scrypt.pdf">STRONGER KEY DERIVATION VIA SEQUENTIAL MEMORY-HARD FUNCTIONS by COLIN PERCIVAL</a>
+                    </li>
+                    <li>
+                        <a href="https://css.csail.mit.edu/cryptdb/">CryptDB</a>
+                    </li>
+                    <li>
+                        <a href="https://msdn.microsoft.com/en-us/library/mt163865.aspx">MS SQL Always Encrypted (Database Engine)</a>
+                    </li>
+                    <li>
+                        <a href="https://support.microsoft.com/en-us/kb/246071">Microsoft Description of Symmetric and Asymmetric Encryption</a>
+                    </li>
+                    <li>
+                        <a href="https://www.owasp.org/index.php/Guide_to_Cryptography">Guide to Cryptography</a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <script src="reveal.js/lib/js/head.min.js">
+    </script> 
+    <script src="reveal.js/js/reveal.js">
+    </script> 
+    <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+              { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+</body>
+</html>
